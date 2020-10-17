@@ -4,7 +4,7 @@ const employeeId = "";
 const aspxauthCookie = "";
 const aspNetSessionIdCookie = "";
 
-const startDate = [21, 10, 2020];
+const startDate = [21, 9, 2020];
 const endDate = [15, 10, 2020];
 
 const skipDate = [
