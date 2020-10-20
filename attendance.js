@@ -8,7 +8,7 @@ const { PUNCHES, EMPLOYEE_ID, ASPXAUTH, ASPNET_SESSION_ID, START_DATE, END_DATE,
 const successMessage = "Attendance punch request has been added successfully."
 
 const punchAttendance = (date) => {
-    console.log("Date => ", date)
+    console.log("Initiated => ", date)
     const data = qs.stringify({
         'Action1': 'Assign',
         'AttendanceType': 'Requested',
@@ -41,14 +41,22 @@ const punchAttendance = (date) => {
     axios(config)
         .then(function (response) {
             if (response.data.includes(successMessage)) {
-                console.log("Success! ", date);
+                console.log("Succeeded => ", date);
             } else {
-                console.log("Failed! ", date);
+                console.log("Failed    => ", date);
             }
         })
         .catch(function (error) {
             console.log(error);
         });
+}
+
+const isSunday = (date) => {
+    if (date.getDay() === 0) {
+        console.log("Skipped   =>  " + moment(date).format("MMM D, YYYY") + " -> Sunday");
+        return true;
+    }
+    return false;
 }
 
 const getTime = (day, month, year) => (new Date(year, month - 1, day).getTime());
@@ -65,7 +73,7 @@ const loop = (currentDate, endDate) => {
     if (currentDate.getTime() > endDate.getTime()) {
         return;
     }
-    if (!(skipDate.includes(currentDate.getTime()))) {
+    if (!(skipDate.includes(currentDate.getTime())) && !isSunday(currentDate)) {
         punchAttendance(moment(currentDate).format("MMM D, YYYY"))
     }
     currentDate.setDate(currentDate.getDate() + 1)
