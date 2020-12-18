@@ -4,14 +4,14 @@ const employeeId = "";
 const aspxauthCookie = "";
 const aspNetSessionIdCookie = "";
 
-const startDate = [21, 9, 2020];
-const endDate = [15, 10, 2020];
+const startDate = [21, 11, 2020];
+const endDate = [17, 12, 2020];
 
 const skipDate = [
-    [27, 9, 2020],
-    [2, 10, 2020],
-    [4, 10, 2020],
-    [11, 10, 2020],
+    [29, 11, 2020],
+    [30, 11, 2020],
+    [6, 12, 2020],
+    [13, 12, 2020],
 ]
 
 export const config = {
